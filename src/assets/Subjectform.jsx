@@ -1,8 +1,8 @@
 import { useState } from "react";
-function SubjectForm(){
+function SubjectForm({addSubject}){
     const [name,setName]=useState("");
-    const handleAdd=({addSubject})=>{
-        if(!name){
+    const handleAdd=()=>{
+        if(!name.trim()){
             return;
         }
         addSubject(name);
@@ -10,7 +10,7 @@ function SubjectForm(){
     }
     return(
         <div className="form">
-            <input type="text" placeholder="Enter the subject" value={name} onChange={(e)=>{setName(e.target.value)}}/>
+            <input type="text" placeholder="Enter the subject" value={name} onChange={(e)=>setName(e.target.value)}/>
             <button onClick={handleAdd}>Add Subject</button>
         </div>
     );

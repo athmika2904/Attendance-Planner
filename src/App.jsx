@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import SubjectForm from './assets/Subjectform';
 import Subjectcard from './assets/Subjectcard';
-import './App.css'
+
 
 function App() {
-  const [subject,setubject]=useState([]);
+  const [subject,setSubject]=useState(()=>{
+  const saved=localStorage.getItem("subject");
+  return saved?JSON.parse(saved):[]});
+  useEffect(()=>{
+    localStorage.setItem("subject",JSON.stringify(subject));
+  },[subject]);
   const addSubject=(name)=>{
     const newSubject={
       id:Date.now(),
@@ -12,22 +17,22 @@ function App() {
       attended:0,
       total:0
     }
-    setubject([...subject,newSubject]);
+    setSubject(prev=>[...prev,newSubject]);
   }
   const MarkPresent=(id)=>{
-    setubject(subject.map((sub)=>{
-      sub.id===id?{...sub,attended:sub.attended+1,total:sub.total+1}:sub
+    setSubject(subject.map((sub)=>{
+      return sub.id===id?{...sub,attended:sub.attended+1,total:sub.total+1}:sub
     }));
   }
   const MarkAbsent=(id)=>{
-    setubject(subject.map((sub)=>{
-      sub.id===id?{...sub,total:sub.total+1}:sub
+    setSubject(subject.map((sub)=>{
+      return sub.id===id?{...sub,total:sub.total+1}:sub
     }));
   }
   const DeleteSubject=(id)=>{
-    setubject(subject.filter((sub)=>{
-      sub.id!==id;
-    }));
+    setSubject(subject.filter((sub)=>
+      sub.id!==id
+    ));
   }
   return (
     <div className='Plannercard'>
@@ -40,4 +45,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
