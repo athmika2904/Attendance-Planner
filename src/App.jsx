@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import SubjectForm from './assets/Subjectform';
 import Subjectcard from './assets/Subjectcard';
-
+import "./App.css";
 
 function App() {
   const [subject,setSubject]=useState(()=>{

@@ -1,0 +1,43 @@
+.subjectcard{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(233, 233, 216);
+    width: 340px;
+    border-radius: 5px;
+    border: 1px green solid;
+    color: black;
+    text-align: center;
+}
+.subjectcard h3,p{
+    padding-bottom: 5px;
+}
+.subjectcard h3{
+    color: rgb(3, 109, 3);
+}
+.subjectcard button{
+    margin: 3px;
+    padding: 5px;
+    border-radius: 2px;
+    color: white;
+    border: none;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+    transition: 0.25s;
+}
+.present{
+    background-color: rgb(8, 170, 8);
+}
+.present:hover{
+    background-color: rgba(96,202,96);
+}
+.absent{
+    background-color: rgb(208, 66, 66);
+}
+.absent:hover{
+    background-color: rgb(208, 107, 107);
+}
+.delete{
+    background-color: rgb(142, 134, 134);
+}
+.delete:hover{
+    background-color: rgb(184, 180, 180);
+}
